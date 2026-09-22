@@ -114,7 +114,7 @@
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">{{ section_title }}</h3>
             <div>
-              {% if section_title == 'graduate research experience' %}
+              {% if section_title == 'Graduate Research Experience' %}
                 {% assign entries = section_entries  | al_cv_sort_by_date %}
                 {% include cv/experience.liquid %}
               {% elsif section_title == 'education' %}

@@ -104,6 +104,13 @@
             <p>{{ cv.sections.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
           </div>
         {% endif %}
+        <!-- Summary -->
+        {% if cv.sections.education %}
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">professional summary</h3>
+            <p>{{ cv.sections.education | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          </div>
+        {% endif %}
 
         <!-- Everything Else -->
         {% for section_pair in cv.sections %}
@@ -114,10 +121,10 @@
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">{{ section_title }}</h3>
             <div>
-              {% if section_title == 'Graduate Research Experience' %}
+              {% if section_title == 'education' %}
                 {% assign entries = section_entries  | al_cv_sort_by_date %}
                 {% include cv/experience.liquid %}
-              {% elsif section_title == 'education' %}
+              {% elsif section_title == 'graduate_research_experience' %}
                 {% assign entries = section_entries | al_cv_sort_by_date %}
                 {% include cv/education.liquid %}
               {% elsif section_title == 'undergraduate research experience' %}

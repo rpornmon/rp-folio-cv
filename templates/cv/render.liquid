@@ -119,7 +119,7 @@
                 {% include cv/education.liquid %}
               {% elsif section_title == 'graduate research experience' %}
                 {% assign entries = section_entries  | al_cv_sort_by_date %}
-                {% include cv/experience.liquid %}
+                {% include cv/education.liquid %}
               {% elsif section_title == 'undergraduate research experience' %}
                 {% assign entries = section_entries  | al_cv_sort_by_date %}
                 {% include cv/experience.liquid %}

@@ -113,9 +113,10 @@
             <p>Education exists</p>
           </div>
         {% endif %}
+
         {% for section_pair in cv.sections %}
            <h3>{{ section_pair }}</h3>
-        {% endif %}
+        {% endfor %}
 
         <!-- Everything Else -->
         {% for section_pair in cv.sections %}

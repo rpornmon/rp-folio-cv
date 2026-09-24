@@ -36,22 +36,8 @@
 
   <article>
     <div class="cv">
-      {% comment %} Determine which CV format to render {% endcomment %}
-      {% assign render_rendercv = false %}
-      {% assign render_jsonresume = false %}
-
-      {% if page.cv_format == 'rendercv' %}
-        {% assign render_rendercv = true %}
-      {% elsif page.cv_format == 'jsonresume' %}
-        {% assign render_jsonresume = true %}
-      {% else %}
-        {% comment %} Legacy behavior: RenderCV takes priority if both exist {% endcomment %}
-        {% if site.data.cv and site.data.cv.cv %}
-          {% assign render_rendercv = true %}
-        {% elsif site.data.resume %}
-          {% assign render_jsonresume = true %}
-        {% endif %}
-      {% endif %}
+      {% comment %} Only uses RenderCV {% endcomment %}
+      {% assign render_rendercv = true %}
 
       {% if render_rendercv and site.data.cv and site.data.cv.cv %}
         {% comment %} RenderCV format {% endcomment %}

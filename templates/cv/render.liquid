@@ -96,10 +96,10 @@
         {% endif %}
 
         <!-- Summary -->
-        {% if cv.summary %}
+        {% if cv.sections.summary %}
           <div class="card mt-3 p-3">
-            <h3 class="card-title font-weight-medium">Professional Summary</h3>
-            <p>{{ cv.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+            <h3 class="card-title font-weight-medium">professional summary</h3>
+            <p>{{ cv.sections.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
           </div>
         {% endif %}
 

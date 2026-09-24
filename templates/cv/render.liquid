@@ -105,6 +105,7 @@
           </div>
         {% endif %}
 
+        {% comment %}
         <!-- RenderCV Sections - Merge Experience and Volunteer -->
         {% comment %} First, combine Experience and Volunteer entries {% endcomment %}
         {% assign empty_array = '' | split: ',' %}
@@ -121,14 +122,15 @@
             </div>
           </div>
         {% endif %}
+        {% endcomment %}
 
-        {% comment %} Now render all other sections except Experience and Volunteer {% endcomment %}
+        {% comment %} Render all the sections {% endcomment %}
         {% for section_pair in cv.sections %}
           {% assign section_title = section_pair[0] %}
           {% assign section_entries = section_pair[1] %}
 
-          {% comment %} Skip Experience and Volunteer as we've already processed them combined {% endcomment %}
-          {% if section_title == 'Experience' or section_title == 'Volunteer' %}
+          {% comment %} Skip Summary as it's being handled earlier {% endcomment %}
+          {% if section_title == 'summary' %}
             {% continue %}
           {% endif %}
 
@@ -136,9 +138,12 @@
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">{{ section_title }}</h3>
             <div>
-              {% if section_title == 'Education' %}
+              {% if section_title == 'education' %}
                 {% assign entries = section_entries | al_cv_sort_by_date %}
                 {% include cv/education.liquid %}
+              {% elsif section_title == 'graduate research experience' %}
+                {% assign entries = section_entries %}
+                {% include cv/experience.liquid %}
               {% elsif section_title == 'Awards' or section_title == 'Honors and Awards' %}
                 {% assign entries = section_entries %}
                 {% include cv/awards.liquid %}
